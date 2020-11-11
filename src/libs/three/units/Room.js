@@ -81,6 +81,16 @@ export default class Room extends classes(Model, transitionHandler) {
     this.scene.position.add(new THREE.Vector3(0, -15, 20))
     this.scene.rotation.y += Math.PI
 
+    this.room = this.scene.children[0]
+    this.walls = this.scene.children[1]
+    this.logo = this.scene.children[2]
+
+    // this.room.visible = false
+    this.room.castShadow = true
+    this.room.receiveShadow = true
+    this.walls.castShadow = true
+    this.walls.receiveShadow = true
+
     this.doors = []
     this.doorsTransitionIds = [-1, -1, -1, -1]
 
@@ -92,6 +102,9 @@ export default class Room extends classes(Model, transitionHandler) {
     this.doors
       .forEach((door, index) => {
         this.setInitialRotationDoor(index)
+
+        door.castShadow = true
+        door.receiveShadow = true
 
         door.cursor = 'pointer'
         tapEvent(door, () => this.clickDoor(index, this.props))

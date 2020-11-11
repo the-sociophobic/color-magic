@@ -46,7 +46,8 @@ export default class Scene extends transitionHandler {
     // this.scene.renderer.setPixelRatio(!optimise ? window.devicePixelRatio : 1)
     this.scene.renderer.setPixelRatio(window.devicePixelRatio)
     this.scene.renderer.shadowMap.enabled = true
-
+    this.scene.renderer.shadowMap.type = THREE.PCFSoftShadowMap
+    
     ViewerDiv.appendChild(this.scene.renderer.domElement)
 
     //ADD CAMERA
@@ -100,7 +101,7 @@ export default class Scene extends transitionHandler {
       bottom < 0 ||
       top > this.scene.renderer.domElement.clientHeight ||
       right < 0 ||
-      left > this.scene.renderer.domElement.clientWidth;
+      left > this.scene.renderer.domElement.clientWidth
   
     if (!isOffscreen || true) {
       const {
