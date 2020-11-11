@@ -1,8 +1,9 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
+// import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
+// import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
 // import { EffectComposer, RenderPass } from 'postprocessing'
+import { Interaction } from 'three.interaction'
 
 import transitionHandler from './handlers/transitionHandler'
 
@@ -21,12 +22,15 @@ export default class Scene extends transitionHandler {
       scene: new THREE.Scene(),
       composer: undefined,
       controls: undefined,
+      interaction: undefined,
     
       clock: new THREE.Clock(),
       frameNumber: 0,
     
       units: {},
       unitsToggled: false,
+
+      react: props.react,
     }
   }
 
@@ -56,6 +60,8 @@ export default class Scene extends transitionHandler {
     this.scene.controls.enabled = false
     this.scene.camera.position.z = targetToCamera
     this.scene.controls.update()
+
+    this.scene.interaction = new Interaction(this.scene.renderer, this.scene.scene, this.scene.camera)
 
     // this.scene.composer = new EffectComposer(this.scene.renderer)
     // this.scene.composer.addPass(new RenderPass(this.scene.scene, this.scene.camera))

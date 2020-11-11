@@ -8,23 +8,25 @@ export default class Model extends Unit {
   constructor(props) {
     super(props)
 
-    this.loadModel()
+    // this.loadModel()
   }
 
-  loadModel = async () => {
-    this.gtlf = await modelLoader(this.props.file)
-    this.model = this.gtlf.scene
+  loadModel = async _this => {
+    _this.gtlf = await modelLoader(_this.props.file)
+    _this.scene = _this.gtlf.scene
+    // console.log(_this)
+    // _this.scene.castShadow = true
+    // _this.scene.receiveShadow = true
 
-    // this.model.castShadow = true
-    // this.model.receiveShadow = true
+    _this.props.scene.add(_this.scene)
 
-    this.props.scene.add(this.model)
+    _this.onLoad && _this.onLoad()
   }
 
   animate = props => {
-    let alpha = props.frameNumber / props.maxFrameNumber * 7
+    // let alpha = props.frameNumber / props.maxFrameNumber * 7
 
-    this.model && (this.model.rotation.y = alpha * 2 * Math.PI)
+    // this.scene && (this.scene.rotation.y = alpha * 2 * Math.PI)
   }
   dispose = props => {}
 }

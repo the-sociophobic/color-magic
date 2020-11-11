@@ -14,7 +14,7 @@ export default class MainScene extends React.Component {
       units={{
         head: {
           unit: Room,
-          args: {file: scene},
+          args: { file: scene },
           disabled: false,
         },
         lights: {
