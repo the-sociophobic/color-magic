@@ -1,0 +1,2 @@
+@media screen and (max-width:1024px){.desktop-only{display:none}}@media screen and (min-width:1025px){.mobile-only{display:none}}.noselect,.Viewer *{-webkit-touch-callout:none;-webkit-user-select:none;-ms-user-select:none;user-select:none}.button{padding:0;cursor:pointer;outline:none;border:none;background-color:transparent}*{margin:0;box-sizing:border-box}.App{width:100vw;height:100vh}.Viewer{width:100%;height:100%}.Viewer,.Viewer *{outline:none}
+/*# sourceMappingURL=main.75c7ed13.chunk.css.map */
